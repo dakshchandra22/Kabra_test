@@ -17,7 +17,13 @@ app.use("/api/products", productRoutes);
 app.use("/api/cart", cartaRoutes);
 
 // Database
-mongoose.connect("mongodb://127.0.0.1:27017/kabra_ts_shop");
-
+mongoose
+  .connect("mongodb://127.0.0.1:27017/kabra_ts_shop")
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 // Start server
 app.listen(5001, () => console.log("Server running on port 5001"));
